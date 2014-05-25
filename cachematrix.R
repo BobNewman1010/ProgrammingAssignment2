@@ -24,22 +24,47 @@
 
 makeCacheMatrix <- function(x = matrix()) {
 
-        ## This function receives as an argument an invertable matrix and
-        ## returns a list containing the functions used to perform and save 
-        ## the matrix inversion along with the functions used to 
-        ## retrieve and return the cached result 
-        ##
-        ## the variable x is used to store the original matrix
-        ## and the variable m is used to store the inverted matrix
+        # This function receives as an argument an invertable matrix and
+        # returns a list containing the functions used to perform and save 
+        # the matrix inversion along with the functions used to 
+        # retrieve and return the cached result 
+        #        
+        # Args:
+        #   x: an invertable matrix.  If not specified an empty numeric matrix is assumed
+        #
+        #
+        # the variable x is used to store the original matrix
+        # and the variable m is used to store the inverted matrix
+                
+
+        m <- NULL               # Initialize m to NULL
         
-        m <- NULL
+        
+        # set - set the value of x (the matrix to be inverted)
+        
         set <- function(y) {
-                x <<- y
-                m <<- NULL
+                x <<- y         # Note that the values of x and m from parent environment are used
+                m <<- NULL      
         }
+        
+        
+        # get - returns the value of the original matrix
+        
         get <- function() x
+        
+        
+        # setInverse - set the value for the inverted matrix
+        
         setInverse <- function(q) m <<- q
+        
+        
+        # getInverse - return inverted matrix
+        
         getInverse <- function() m
+        
+        
+        # return the list of functions
+        
         list(set = set, get = get,
              setInverse = setInverse,
              getInverse = getInverse)
