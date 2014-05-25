@@ -21,3 +21,18 @@ This function is used to return the cached inverse of a matrix
 If there is no cached value the inverse of the matrix is computed
 and the resulting matrix is returned and stored in the
 cached variable m for future use.
+
+
+Usage -  (assuming myMatrix is an invertable matrix)
+
+   To create the cached matrix
+   
+        myCachedMatrix <- makeCacheMatrix(myMatrix) 
+
+   To retrieve the inverse
+
+        cacheSolve(myCachedMatrix)
+
+   To change the matrix to be cached
+
+        myCachedMatrix$set(b)  -- Where b is a new invertable matrix
